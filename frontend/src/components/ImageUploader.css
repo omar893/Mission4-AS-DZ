@@ -1,0 +1,9 @@
+.small-image {
+  width: 600px;
+  height: auto;
+}
+
+.image-container {
+  margin-top: 20px;
+  text-align: center;
+}

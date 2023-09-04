@@ -1,31 +1,22 @@
-
-const express = require('express')
-const router = express.Router()
-const axios = require('axios')
-const fs = require('fs')
-const path = require('path')
-
+const express = require("express");
+const router = express.Router();
+const axios = require("axios");
+const CarsList = require("../mongodb/models/car");
 
 router.get("/test", (req, res) => {
   res.send("Hello World!!");
 });
 
-router.get("/test2", (req, res) => {
-  res.send("Dan is sick nasty with it.");
+router.get("/getCars", async (req, res) => {
+  try {
+    const cars = await CarsList.find();
+    res.json(cars);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
-
-router.get('/test3', (req, res) => {
-  const imagePath = path.join(__dirname, '../images/cat.jpg') // Update this path
-  const imageStream = fs.createReadStream(imagePath)
-
-  res.setHeader('Content-Type', 'image/jpeg')
-  res.setHeader('Content-Disposition', 'inline; filename=image.jpg')
-
-  imageStream.pipe(res)
-})
-
-router.post('/upload', async (req, res) => {
+router.post("/upload", async (req, res) => {
   try {
     const image = req.file.buffer; // Access the image buffer
     const apiUrl =

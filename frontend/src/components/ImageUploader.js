@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
-import carsData from "./cars.json";
+import "./ImageUploader.css";
 
 const ImageUploader = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [similarCar, setSimilarCar] = useState(null);
+  const [uploadedImageUrl, setUploadedImageUrl] = useState(null);
 
   const handleImageChange = (event) => {
-    // Updates the selectedImage state with the image file.
-    setSelectedImage(event.target.files[0]);
+    const file = event.target.files[0];
+    // Update the selectedImage state and also create an Object URL for the uploaded image
+    setSelectedImage(file);
+    setUploadedImageUrl(URL.createObjectURL(file));
   };
 
   const handleImageUpload = async () => {
@@ -25,7 +28,7 @@ const ImageUploader = () => {
       const response = await axios.post(
         // Send post request with image
 
-        "https://m3-as-dz.azurewebsites.net/api/upload",
+        "http://localhost:5000/api/upload",
         formData
       );
 
@@ -36,10 +39,16 @@ const ImageUploader = () => {
         prediction.tagName.toLowerCase()
       );
 
+      // Make an Axios call to fetch cars from the database
+      const carsApiResponse = await axios.get(
+        "http://localhost:5000/api/getCars"
+      );
+      const carsData = carsApiResponse.data;
+
       let similarCars = []; // Empty array to hold list of cars
       // Find the first similar car based on the top prediction
       for (let i = 0; i < Math.min(3, targetTags.length); i++) {
-        const filteredCars = carsData.carsList.filter(
+        const filteredCars = carsData.filter(
           (car) => car.model.toLowerCase() === targetTags[i]
         ); //Filter json
 
@@ -65,6 +74,11 @@ const ImageUploader = () => {
       <input type="file" accept="image/*" onChange={handleImageChange} />
       <button onClick={handleImageUpload}>Upload</button>
 
+      <div className="image-container">
+        {uploadedImageUrl && (
+          <img src={uploadedImageUrl} alt="Uploaded" className="small-image" />
+        )}
+      </div>
       {similarCar && (
         <div>
           <h2>Similar Cars</h2>
@@ -82,7 +96,11 @@ const ImageUploader = () => {
               <p>
                 <b>Type:</b> {car.type}
               </p>
-              <img src={car.imageURL} alt={`${car.brand} ${car.model}`} />
+              <img
+                src={car.imageURL}
+                alt={`${car.brand} ${car.model}`}
+                className="small-image"
+              />
             </div>
           ))}
         </div>
