@@ -1,0 +1,85 @@
+{
+  "carsList": [
+    {
+      "brand": "Toyota",
+      "model": "AE86",
+      "year": 2000,
+      "color": "Red",
+      "type": "Sedan",
+      "imageURL": "./carImages/ae86red.jpg"
+    },
+    {
+      "brand": "Toyota",
+      "model": "AE86",
+      "year": 2012,
+      "color": "White",
+      "type": "Sedan",
+      "imageURL": "./carImages/ae86original.jpg"
+    },
+    {
+      "brand": "Tesla",
+      "model": "Cybertruck",
+      "year": 2024,
+      "color": "Silver",
+      "type": "Truck",
+      "imageURL": "https://hips.hearstapps.com/hmg-prod/images/tesla-cybertruck-104-1574400035.jpg?crop=1.00xw:0.919xh;0,0.0389xh&resize=980:*"
+    },
+
+    {
+      "brand": "Lambourghini",
+      "model": "Veneno",
+      "year": 2022,
+      "color": "Silver",
+      "type": "Supercar",
+      "imageURL": "./carImages/veneno1.jpg"
+    },
+    {
+      "brand": "Lambourghini",
+      "model": "Veneno",
+      "year": 2022,
+      "color": "Orange",
+      "type": "Supercar",
+      "imageURL": "./carImages/veneno2.jpg"
+    },
+    {
+      "brand": "Apollo",
+      "model": "IE",
+      "year": 2018,
+      "color": "White",
+      "type": "Supercar",
+      "imageURL": "./carImages/IE1.jpg"
+    },
+    {
+      "brand": "Honda",
+      "model": "Civic",
+      "year": 2018,
+      "color": "Black",
+      "type": "Sedan",
+      "imageURL": "./carImages/civic1.jpg"
+    },
+    {
+      "brand": "Honda",
+      "model": "Civic",
+      "year": 2016,
+      "color": "Silver",
+      "type": "Sedan",
+      "imageURL": "./carImages/civic2.jpg"
+    },
+    {
+      "brand": "Bugatti",
+      "model": "Divo",
+      "year": 2020,
+      "color": "Silver",
+      "type": "Supercar",
+      "imageURL": "./carImages/divo1.jpg"
+    },
+    {
+      "brand": "Toyota",
+      "model": "Hilux",
+      "year": 2020,
+      "color": "White",
+      "type": "Truck",
+      "imageURL": "./carImages/hilux1.jpg"
+    }
+  ]
+}

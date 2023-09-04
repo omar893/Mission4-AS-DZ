@@ -1,0 +1,20 @@
+{
+  "name": "carslist-cli",
+  "version": "1.0.0",
+  "description": "Cars List CLI",
+  "main": "index.js",
+  "type": "module",
+  "preferGlobal": true,
+  "bin": "./commands.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^11.0.0",
+    "config": "3.3.1",
+    "inquirer": "^9.2.10",
+    "mongoose": "^7.5.0"
+  }
+}
