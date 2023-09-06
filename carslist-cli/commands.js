@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { Command } from "commander";
 import inquirer from "inquirer";
-import { addCar, findCar, updateCar, removeCar, listAllCars } from "./index.js";
+import { addCar, findCar, updateCar, removeCar, listAllCars, seedCars } from "./index.js";
 
 const { prompt } = inquirer;
 const program = new Command();
@@ -81,5 +81,14 @@ program
   .alias("l")
   .description("List all cars")
   .action(() => listAllCars());
+
+//Seed Command
+program 
+  .command('seed')
+  .description('Upload random Cars to test MongoDB')
+  .action(() => {
+    seedCars();
+  });
+
 
 program.parse(process.argv);
